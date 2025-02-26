@@ -34,7 +34,7 @@ def get_current_http_session(driver: WebDriver) -> Session:
         Session: A requests Session object with cookies from the WebDriver.
     """
 
-    cookies: List[Dict[str, Any]] = driver.get_cookies() # type: ignore
+    cookies: List[Dict[str, Any]] = driver.get_cookies()  # type: ignore
     session = requests.Session()
     for cookie in cookies:
         session.cookies.set(cookie["name"], cookie["value"])
