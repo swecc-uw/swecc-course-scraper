@@ -37,10 +37,8 @@ dev = [
     "mypy",
     "ruff",
     "black",
-    "types-click",      # type stubs for click
-    "types-PyYAML",     # type stubs for PyYAML (used by mkdocs)
-    "types-Markdown",   # type stubs for markdown
-    "types-requests",   # type stubs for requests
+    "types-requests",
+    "types-selenium",
 
     # Development Tools
     "pre-commit",

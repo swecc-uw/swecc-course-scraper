@@ -1,3 +1,5 @@
+import argparse
+from typing import Any, Dict, List
 import requests
 from requests.sessions import Session
 from selenium import webdriver
@@ -17,7 +19,7 @@ def load_webdriver(url: str = ROOT) -> WebDriver:
         WebDriver: An initialized Chrome WebDriver instance.
     """
     driver = webdriver.Chrome()
-    driver.get("")
+    driver.get(url)
     return driver
 
 
@@ -31,18 +33,17 @@ def get_current_http_session(driver: WebDriver) -> Session:
     Returns:
         Session: A requests Session object with cookies from the WebDriver.
     """
-    cookies = driver.get_cookies()
+
+    cookies: List[Dict[str, Any]] = driver.get_cookies() # type: ignore
     session = requests.Session()
     for cookie in cookies:
         session.cookies.set(cookie["name"], cookie["value"])
     return session
 
 
-def example() -> None:
+def command(parser: argparse.Namespace) -> None:
     """
     Example function demonstrating the workflow of logging in and making an API request.
-
-    This function:
     1. Loads a WebDriver
     2. Waits for the user to log in manually
     3. Extracts the session cookies
@@ -51,6 +52,7 @@ def example() -> None:
     Returns:
         Dict[str, Any]: The JSON response from the API request.
     """
+
     driver = load_webdriver()
 
     input("Press any key to continue after logging in...")
@@ -60,4 +62,5 @@ def example() -> None:
         "https://dawgpath.uw.edu/api/v1/search/?search_string=math",
         cookies=session.cookies,
     )
+
     print(res.json())
