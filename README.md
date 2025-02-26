@@ -1,5 +1,11 @@
 # SWECC Course Scraper
 
+### Installation (non-contributors)
+
+```bash
+pip install swecc-course-scraper
+```
+
 ### Dev Setup
 
 ```bash
