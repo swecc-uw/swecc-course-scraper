@@ -1,10 +1,4 @@
-# SWECC pypi template
-
-Get up and running quickly with a new python package.
-
-1. Rename [`./swecc_pypi_template`](./swecc_pypi_template) to whatever your package is named
-2. Find and replace `./swecc_pypi_template` and `swecc-pypi-template`
-3. Optionally change the python versions in [`./pyproject.toml`](./pyproject.toml) and [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+# SWECC Course Scraper
 
 ### Dev Setup
 
@@ -19,15 +13,14 @@ pre-commit install
 
 ```bash
 # lint
-ruff check swecc_pypi_template
+ruff check swecc_course_scraper
 
 # format
-black swecc_pypi_template
+black swecc_course_scraper
 
 # type check
-mypy swecc_pypi_template
+mypy swecc_course_scraper
 
 # test
 pytest
 ```
-
