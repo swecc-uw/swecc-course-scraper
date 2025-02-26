@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "swecc-course-scraper"
-version = "0.1.1"
+version = "0.1.2"
 description = "A template for creating a Python package and publishing it to PyPI"
 readme = "README.md"
 requires-python = ">=3.10"
