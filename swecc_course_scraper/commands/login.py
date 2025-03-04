@@ -1,11 +1,14 @@
 import argparse
 from typing import Any, Dict, List
+
 import requests
 from requests.sessions import Session
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 ROOT = "https://dawgpath.uw.edu"
+SCHEDULE = "https://www.washington.edu/students/timeschd/"
+COURSES = "https://www.washington.edu/students/crscat/cse.html"
 
 
 def load_webdriver(url: str = ROOT) -> WebDriver:
@@ -64,3 +67,23 @@ def command(parser: argparse.Namespace) -> None:
     )
 
     print(res.json())
+
+
+def load_schedule(
+    department: str = "cse", quarter: str = "WIN", year: str = "2023"
+) -> str:
+    """
+    Returns the text of the schedule webpage for the given department, quarter, and year.
+
+    Args:
+        str: The department code (e.g., "cse").
+        str: The quarter code (e.g., "WIN").
+        str: The year code (e.g., "2023").
+
+    Returns:
+        str: The fetched the HTML content of the webpage.
+    """
+    res = requests.get(
+        SCHEDULE + quarter + year + "/" + department + ".html",
+    )
+    return res.text
