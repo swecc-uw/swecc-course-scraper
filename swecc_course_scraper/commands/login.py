@@ -7,8 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 ROOT = "https://dawgpath.uw.edu"
-COURSES = "https://www.washington.edu/students/crscat/cse.html"
-
 
 def load_webdriver(url: str = ROOT) -> WebDriver:
     """
