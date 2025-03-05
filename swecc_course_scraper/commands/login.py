@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 
 ROOT = "https://dawgpath.uw.edu"
 
+
 def load_webdriver(url: str = ROOT) -> WebDriver:
     """
     Initialize and return a Chrome WebDriver instance.
