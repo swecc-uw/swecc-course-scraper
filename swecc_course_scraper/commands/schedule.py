@@ -1,8 +1,10 @@
+from datetime import datetime
+
 import requests
 
 SCHEDULE = "https://www.washington.edu/students/timeschd/"
 EARLIEST_RECORDED_YEAR = 2003
-CURRENT_YEAR = 2025
+CURRENT_YEAR = datetime.now().year
 
 
 def command(department: str, quarter: str, year: int) -> str:
