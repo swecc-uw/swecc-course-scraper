@@ -5,6 +5,31 @@ import requests
 SCHEDULE = "https://www.washington.edu/students/timeschd/"
 EARLIEST_RECORDED_YEAR = 2003
 CURRENT_YEAR = datetime.now().year
+VALID_QUARTERS = ["WIN", "SPR", "SUM", "AUT"]
+
+
+def fetch_html(url: str) -> str:
+    """
+    Fetches the HTML content of the given UW time schedule webpage.
+
+    Args:
+        url (str): The URL of the webpage.
+
+    Returns:
+        str: The raw HTML content of the webpage.
+
+    Raises:
+        FileNotFoundError: If the page does not exist (404).
+        ConnectionError: If there is a network issue.
+    """
+    try:
+        res = requests.get(url)
+        res.raise_for_status()
+        return res.text
+    except requests.exceptions.HTTPError as e:
+        raise FileNotFoundError(f"Page not found or no courses available: \n{e}") from e
+    except requests.exceptions.RequestException as e:
+        raise ConnectionError(f"Unable to connect to {url}: \n{e}") from e
 
 
 def command(department: str, quarter: str, year: int) -> str:
@@ -27,7 +52,7 @@ def command(department: str, quarter: str, year: int) -> str:
     department = department.lower()
     quarter = quarter.upper()
 
-    if quarter not in ["WIN", "SPR", "SUM", "AUT"]:
+    if quarter not in VALID_QUARTERS:
         raise ValueError("Quarter must be WIN, SPR, SUM, or AUT")
 
     try:
@@ -40,5 +65,4 @@ def command(department: str, quarter: str, year: int) -> str:
             f"Year must be between {EARLIEST_RECORDED_YEAR} and {CURRENT_YEAR}"
         )
 
-    res = requests.get(f"{SCHEDULE}{quarter}{year}/{department}.html")
-    return res.text
+    return fetch_html(f"{SCHEDULE}{quarter}{year}/{department}.html")

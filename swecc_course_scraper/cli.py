@@ -29,6 +29,6 @@ if __name__ == "__main__":
         nargs=3,
         metavar=("DEPARTMENT", "QUARTER", "YEAR"),
         type=str,
-        help="Get previous quarters schedules. e.g.: --schedule cse WIN 2023",
+        help="Get previous quarters schedules. \n e.g.: --schedule cse [WIN|SPR|SUM|AUT] 2023",
     )
     main(parser.parse_args())
