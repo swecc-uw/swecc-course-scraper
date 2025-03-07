@@ -1,5 +1,6 @@
 import argparse
 from typing import Any, Dict, List
+
 import requests
 from requests.sessions import Session
 from selenium import webdriver
