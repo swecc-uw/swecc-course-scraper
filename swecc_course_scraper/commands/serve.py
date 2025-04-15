@@ -1,11 +1,11 @@
 import http.server
-import socketserver
 import json
+import socketserver
 
 PORT = 8000
 
 
-def command(json_path: str):
+def command(json_path: str) -> None:
     """
     Initializes a local HTTP server that serves the content of a JSON file at /data
 
@@ -22,10 +22,10 @@ def command(json_path: str):
     """
 
     class JSONDataHandler(http.server.SimpleHTTPRequestHandler):
-        def do_GET(self):
+        def do_GET(self) -> None:
             if self.path == "/data":
                 try:
-                    with open(json_path, "r", encoding="utf-8") as f:
+                    with open(json_path, encoding="utf-8") as f:
                         data = json.load(f)
                         response = json.dumps(data).encode("utf-8")
                         self.send_response(200)
@@ -40,7 +40,7 @@ def command(json_path: str):
                 except Exception as e:
                     self.send_response(500)
                     self.end_headers()
-                    self.wfile.write(f"Server error: {str(e)}".encode())
+                    self.wfile.write(f"Server error: {e!s}".encode())
             else:
                 self.send_response(404)
                 self.end_headers()
