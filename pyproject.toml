@@ -79,7 +79,7 @@ Issues = "https://github.com/swecc/swecc-course-scraper/issues"
 
 [tool.ruff]
 lint.select = ["E", "F", "I", "N", "W", "B", "UP", "PL", "RUF"]
-lint.ignore = []
+lint.ignore = ["N802"]
 line-length = 100
 target-version = "py38"
 fix = true
