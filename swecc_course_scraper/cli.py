@@ -2,6 +2,7 @@ import argparse
 
 from swecc_course_scraper.commands.login import command as login
 from swecc_course_scraper.commands.schedule import command as schedule
+from swecc_course_scraper.commands.serve import command as serve
 
 
 def main(args: argparse.Namespace) -> None:
@@ -11,6 +12,8 @@ def main(args: argparse.Namespace) -> None:
         elif args.schedule:
             department, quarter, year = args.schedule
             print(schedule(department, quarter, year))
+        elif args.serve:
+            serve(args.serve)
         else:
             print("No command specified. Use --help to show all commands.")
 
@@ -30,5 +33,11 @@ if __name__ == "__main__":
         metavar=("DEPARTMENT", "QUARTER", "YEAR"),
         type=str,
         help="Get previous quarters schedules. \n e.g.: --schedule cse [WIN|SPR|SUM|AUT] 2023",
+    )
+    parser.add_argument(
+            "--serve",
+            type=str,
+            metavar=("JSON_PATH"),
+            help="Serve the given JSON file at https://localhost:8000/data"
     )
     main(parser.parse_args())
