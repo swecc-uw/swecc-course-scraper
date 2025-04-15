@@ -35,9 +35,9 @@ if __name__ == "__main__":
         help="Get previous quarters schedules. \n e.g.: --schedule cse [WIN|SPR|SUM|AUT] 2023",
     )
     parser.add_argument(
-            "--serve",
-            type=str,
-            metavar=("JSON_PATH"),
-            help="Serve the given JSON file at https://localhost:8000/data"
+        "--serve",
+        type=str,
+        metavar=("JSON_PATH"),
+        help="Serve the given JSON file at https://localhost:8000/data",
     )
     main(parser.parse_args())

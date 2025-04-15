@@ -2,7 +2,8 @@ import http.server
 import socketserver
 import json
 
-PORT=8000
+PORT = 8000
+
 
 def command(json_path: str):
     """
@@ -19,6 +20,7 @@ def command(json_path: str):
     ValueError: If the file is not in valid JSON format
     OSError: If the server fails to bind to the specified port
     """
+
     class JSONDataHandler(http.server.SimpleHTTPRequestHandler):
         def do_GET(self):
             if self.path == "/data":
