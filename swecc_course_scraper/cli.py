@@ -1,8 +1,8 @@
 import argparse
 
+from swecc_course_scraper.commands.frequency import command as frequency
 from swecc_course_scraper.commands.login import command as login
 from swecc_course_scraper.commands.schedule import command as schedule
-from swecc_course_scraper.commands.frequency import command as frequency
 
 
 def main(args: argparse.Namespace) -> None:
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--frequency",
-        nargs='+',
+        nargs="+",
         metavar=("COURSE_CODE", "YEARS_CHECK"),
         type=str,
         help="Get the frequency of a course. \n e.g.: --frequency CSE143 5",

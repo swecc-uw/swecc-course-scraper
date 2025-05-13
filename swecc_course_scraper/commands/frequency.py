@@ -35,7 +35,7 @@ def command(course_code: str, check_years: int = 5) -> str:
         for quarter in VALID_QUARTERS:
             total_quarters += 1
             try:
-                schedule_data = schedule_command(course_department, quarter, str(year))
+                schedule_data = schedule_command(course_department, quarter, year)
                 if course_code in schedule_data:
                     frequency[quarter] = frequency.get(quarter, 0) + 1
                     offerings.append(f"{quarter} {year}")
