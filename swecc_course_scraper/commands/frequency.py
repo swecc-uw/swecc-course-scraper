@@ -40,6 +40,7 @@ def command(course_code: str, check_years: int = 5) -> str:
                     frequency[quarter] = frequency.get(quarter, 0) + 1
                     offerings.append(f"{quarter} {year}")
             except (FileNotFoundError, ConnectionError):
+                logging.exception(f"Error fetching schedule for {course_department} {quarter} {year}")
                 continue
 
     result = [f"Course {course_code.upper()}:"]
