@@ -41,9 +41,12 @@ if __name__ == "__main__":
         nargs="+",
         metavar=("COURSE_CODE", "YEARS_CHECK"),
         type=str,
-        help=("Get the frequency a course is offered by quarter within a specified number of years from today. \n"
-              "COURSE_CODE: Course code to check \n:
-              "YEARS_CHECK: Number of years to check from today (Default 5 years) \n"
-              "e.g.: --frequency CSE143 5"),
+        help=(
+            "Get the frequency a course is offered by quarter within a specified number of"
+            " years from today. \n"
+            "COURSE_CODE: Course code to check \n"
+            "YEARS_CHECK: Number of years to check from today (Default 5 years) \n"
+            "e.g.: --frequency CSE143 5"
+        ),
     )
     main(parser.parse_args())
