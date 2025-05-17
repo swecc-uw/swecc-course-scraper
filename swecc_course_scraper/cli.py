@@ -1,5 +1,6 @@
 import argparse
 
+from swecc_course_scraper.commands.frequency import DEFAULT_YEARS_CHECK
 from swecc_course_scraper.commands.frequency import command as frequency
 from swecc_course_scraper.commands.login import command as login
 from swecc_course_scraper.commands.schedule import command as schedule
@@ -14,7 +15,11 @@ def main(args: argparse.Namespace) -> None:
             print(schedule(department, quarter, year))
         elif args.frequency:
             course_code = args.frequency[0]
-            check_years = int(args.frequency[1]) if len(args.frequency) > 1 else 5
+            check_years = (
+                int(args.frequency[1])
+                if len(args.frequency) > 1
+                else DEFAULT_YEARS_CHECK
+            )
             print(frequency(course_code, check_years))
         else:
             print("No command specified. Use --help to show all commands.")
@@ -45,7 +50,8 @@ if __name__ == "__main__":
             "Get the frequency a course is offered by quarter within a specified number of"
             " years from today. \n"
             "COURSE_CODE: Course code to check \n"
-            "YEARS_CHECK: Number of years to check from today (Default 5 years) \n"
+            f"YEARS_CHECK: Number of years to check from today (Default {DEFAULT_YEARS_CHECK}"
+            " years) \n"
             "e.g.: --frequency CSE143 5"
         ),
     )

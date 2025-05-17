@@ -9,14 +9,18 @@ from swecc_course_scraper.commands.schedule import (
     command as schedule_command,
 )
 
+# Constant for default years to check
+DEFAULT_YEARS_CHECK = 5
 
-def command(course_code: str, check_years: int = 5) -> str:
+
+def command(course_code: str, check_years: int = DEFAULT_YEARS_CHECK) -> str:
     """
-    Fetches the frequence for a specified course code from multiple quarters.
+    Returns the frequency for a specified course code from multiple quarters in a specified number
+    of years from today.
 
     Args:
         str: The course code (e.g., "cse143", "CSE143").
-        int: The number of years to check for course frequency. Default is 5.
+        int: The number of years to check for course frequency. Default is DEFAULT_YEARS_CHECK.
 
     Returns:
         str: Lists course offering frequency.
