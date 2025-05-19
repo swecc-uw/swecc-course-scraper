@@ -37,6 +37,10 @@ def command(json_path: str) -> None:
                     self.send_response(404)
                     self.end_headers()
                     self.wfile.write(b"File not found")
+                except json.JSONDecodeError:
+                    self.send_response(400)
+                    self.end_headers()
+                    self.wfile.write(b"Invalid JSON format")
                 except Exception as e:
                     self.send_response(500)
                     self.end_headers()
