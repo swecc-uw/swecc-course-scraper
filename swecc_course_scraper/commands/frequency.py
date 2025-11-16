@@ -1,6 +1,5 @@
-from typing import Dict, List
 import logging
-
+from typing import Dict, List
 
 from swecc_course_scraper.commands.schedule import (
     CURRENT_YEAR,
