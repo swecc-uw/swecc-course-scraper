@@ -48,7 +48,8 @@ if __name__ == "__main__":
         "--serve",
         type=str,
         metavar=("JSON_PATH"),
-        help="Serve the given JSON file at https://localhost:8000/data",)
+        help="Serve the given JSON file at https://localhost:8000/data",
+    )
     parser.add_argument(
         "--frequency",
         nargs="+",
