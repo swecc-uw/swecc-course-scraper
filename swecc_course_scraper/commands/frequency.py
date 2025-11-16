@@ -1,4 +1,6 @@
 from typing import Dict, List
+import logging
+
 
 from swecc_course_scraper.commands.schedule import (
     CURRENT_YEAR,
@@ -44,8 +46,6 @@ def command(course_code: str, check_years: int = DEFAULT_YEARS_CHECK) -> str:
                     frequency[quarter] = frequency.get(quarter, 0) + 1
                     offerings.append(f"{quarter} {year}")
             except (FileNotFoundError, ConnectionError):
-                import logging
-
                 logging.exception(
                     f"Error fetching schedule for {course_department} {quarter} {year}"
                 )
