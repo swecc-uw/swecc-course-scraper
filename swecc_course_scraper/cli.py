@@ -4,6 +4,7 @@ from swecc_course_scraper.commands.frequency import DEFAULT_YEARS_CHECK
 from swecc_course_scraper.commands.frequency import command as frequency
 from swecc_course_scraper.commands.login import command as login
 from swecc_course_scraper.commands.schedule import command as schedule
+from swecc_course_scraper.commands.serve import command as serve
 
 
 def main(args: argparse.Namespace) -> None:
@@ -13,6 +14,8 @@ def main(args: argparse.Namespace) -> None:
         elif args.schedule:
             department, quarter, year = args.schedule
             print(schedule(department, quarter, year))
+        elif args.serve:
+            serve(args.serve)
         elif args.frequency:
             course_code = args.frequency[0]
             check_years = (
@@ -40,6 +43,12 @@ if __name__ == "__main__":
         metavar=("DEPARTMENT", "QUARTER", "YEAR"),
         type=str,
         help="Get previous quarters schedules. \n e.g.: --schedule cse [WIN|SPR|SUM|AUT] 2023",
+    )
+    parser.add_argument(
+        "--serve",
+        type=str,
+        metavar=("JSON_PATH"),
+        help="Serve the given JSON file at https://localhost:8000/data",
     )
     parser.add_argument(
         "--frequency",
